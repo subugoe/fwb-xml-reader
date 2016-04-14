@@ -7,7 +7,7 @@
           <orth>test_lemma,</orth>
         </form>
         <dictScrap rend="artkopf">
-          <gram type="wortart">Pron.</gram>
+          <gram type="wortart" bla="aa">Pron.</gram>
           some text.
         </dictScrap>
       </entry>
