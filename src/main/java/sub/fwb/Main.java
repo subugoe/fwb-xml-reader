@@ -18,15 +18,29 @@ public class Main {
 			File inputDir = new File(args[0]);
 			File outputFile = new File(args[1]);
 			
+			System.out.println("Searching in directory " + inputDir.getAbsolutePath());
+			
 			ArrayList<File> allFiles = new ArrayList<File>();
 			fillWithFiles(allFiles, inputDir);
+			
+			System.out.println("Found " + allFiles.size() + " XML files");
+			System.out.println("...");
 			
 			XmlReader xmlReader = new XmlReader();
 			Set<String> elements = new TreeSet<String>();
 
+			System.out.print("File number: ");
+			int i = 1;
 			for (File currentFile : allFiles) {
+				if (i % 1000 == 0 || i == allFiles.size()) {
+					System.out.print("..." + i);
+				}
 				xmlReader.addElementsToSet(new FileInputStream(currentFile), elements);
+				i++;
 			}
+			
+			System.out.println();
+			System.out.println("Writing all found elements to file " + outputFile.getAbsolutePath());
 			
 			FileWriterWithEncoding fw = new FileWriterWithEncoding(outputFile, "UTF-8");
 			for (String elem : elements) {
