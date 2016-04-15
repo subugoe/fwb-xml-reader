@@ -18,12 +18,20 @@ public class Main {
 			File inputDir = new File(args[0]);
 			File outputFile = new File(args[1]);
 			
+			if (!inputDir.exists()) {
+				System.out.println("Directory not found: " + inputDir.getAbsolutePath());
+				System.exit(0);
+			}
+			
 			System.out.println("Searching in directory " + inputDir.getAbsolutePath());
 			
 			ArrayList<File> allFiles = new ArrayList<File>();
 			fillWithFiles(allFiles, inputDir);
 			
 			System.out.println("Found " + allFiles.size() + " XML files");
+			if (allFiles.size() == 0) {
+				System.exit(0);
+			}
 			System.out.println("...");
 			
 			XmlReader xmlReader = new XmlReader();
