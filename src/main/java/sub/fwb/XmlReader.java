@@ -38,7 +38,13 @@ public class XmlReader {
 					Iterator<Attribute> iter = startTag.getAttributes();
 					while (iter.hasNext()) {
 						Attribute attr = iter.next();
-						attributes.add(attr.getName().getLocalPart());
+						String prefix = attr.getName().getPrefix();
+						String localName = attr.getName().getLocalPart();
+						if (prefix == null || "".equals(prefix)) {
+							attributes.add(localName);
+						} else {
+							attributes.add(prefix + ":" + localName);
+						}
 					}
 					Collections.sort(attributes);
 					
