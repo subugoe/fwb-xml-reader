@@ -13,7 +13,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		if (args.length != 2) {
-			System.out.println("Syntax: java -jar get-elements.jar <input-dir> <output-file>");
+			System.out.println("Syntax: java -jar fwb-xml-reader.jar <input-dir> <output-file>");
 		} else {
 			File inputDir = new File(args[0]);
 			File outputFile = new File(args[1]);
