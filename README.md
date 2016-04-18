@@ -12,11 +12,11 @@ You need to make sure that Java version 6 or higher is installed on your system.
 To run the tool, you need to provide the parent directory containing your XML files and also 
 the name for the destination text file:
 
-java -jar fwb-xml-reader.jar <input-dir> <output-file>
+`java -jar fwb-xml-reader.jar <input-dir> <output-file>`
 
 For example:
 
-java -jar fwb-xml-reader.jar my-files/xml all-elements.txt
+`java -jar fwb-xml-reader.jar my-files/xml all-elements.txt`
 
 # Compilation
 
