@@ -23,6 +23,6 @@ For example:
 To compile the project, you need to have Maven 3 installed. Navigate into the project directory 
 and execute the command:
 
-mvn clean package
+`mvn clean package`
 
 The .jar file will be placed into the target/ subdirectory.
