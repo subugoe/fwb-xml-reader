@@ -29,31 +29,34 @@ public class XmlReader {
 				switch (event.getEventType()) {
 
 				case XMLStreamConstants.START_ELEMENT:
-					StartElement startTag = event.asStartElement(); 
+					StartElement startTag = event.asStartElement();
 					String elementName = startTag.getName().getLocalPart();
-					
+
 					List<String> attributes = new ArrayList<String>();
 					String allAttributesString = "";
-					
+
 					Iterator<Attribute> iter = startTag.getAttributes();
 					while (iter.hasNext()) {
 						Attribute attr = iter.next();
 						String prefix = attr.getName().getPrefix();
 						String localName = attr.getName().getLocalPart();
-						if (prefix == null || "".equals(prefix)) {
+						if ("rend".equals(localName) && !attr.getValue().matches("^[0-9\\-]+$")
+								|| "rendition".equals(localName)) {
+							attributes.add(localName + "=\"" + attr.getValue() + "\"");
+						} else if (prefix == null || "".equals(prefix)) {
 							attributes.add(localName);
 						} else {
 							attributes.add(prefix + ":" + localName);
 						}
 					}
 					Collections.sort(attributes);
-					
+
 					for (String a : attributes) {
 						allAttributesString += " " + a;
 					}
-					
+
 					elements.add("<" + elementName + ">" + allAttributesString);
-					
+
 					break;
 				default:
 					// ignore all the other events

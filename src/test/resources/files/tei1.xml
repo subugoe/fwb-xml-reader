@@ -4,7 +4,7 @@
     <body>
       <entry xml:id="some.id">
         <form type="lemma">
-          <orth>test_lemma,</orth>
+          <orth rend="1-12">test_lemma,</orth>
         </form>
         <dictScrap rend="artkopf">
           <gram type="wortart" bla="aa">Pron.</gram>
